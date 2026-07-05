@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4004ccedc26b0ca40a86750e10cc0f70, type: 3}
+  m_Name: TestLevelData
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  Name: "\u0417\u0435\u043B\u0451\u043D\u044B\u0435 \u043B\u0443\u0433\u0430"
+  GoldPerWin: 100
+  Multipliers: []
+  Points:
+  - Name: "\u0417\u0435\u0440\u043D\u0430"
+    HP: 10
+    Image: {fileID: 21300000, guid: ee5593124a441b142bb8854e3fe2e9da, type: 3}
+    Rewards:
+    - Ingridient:
+        Name: 
+        Image: {fileID: 0}
+      Count: 1
+    Requests: []
+  - Name: 
+    HP: 0
+    Image: {fileID: 0}
+    Rewards: []
+    Requests: []
+  - Name: 
+    HP: 0
+    Image: {fileID: 0}
+    Rewards: []
+    Requests: []
+  - Name: 
+    HP: 0
+    Image: {fileID: 0}
+    Rewards: []
+    Requests: []
+  - Name: 
+    HP: 0
+    Image: {fileID: 0}
+    Rewards: []
+    Requests: []
+  - Name: 
+    HP: 0
+    Image: {fileID: 0}
+    Rewards: []
+    Requests: []
+  - Name: 
+    HP: 0
+    Image: {fileID: 0}
+    Rewards: []
+    Requests: []
+  - Name: 
+    HP: 0
+    Image: {fileID: 0}
+    Rewards: []
+    Requests: []
+  - Name: 
+    HP: 0
+    Image: {fileID: 0}
+    Rewards: []
+    Requests: []
+  - Name: 
+    HP: 0
+    Image: {fileID: 0}
+    Rewards: []
+    Requests: []
+  - Name: 
+    HP: 0
+    Image: {fileID: 0}
+    Rewards: []
+    Requests: []
+  - Name: 
+    HP: 0
+    Image: {fileID: 0}
+    Rewards: []
+    Requests: []
+  - Name: 
+    HP: 0
+    Image: {fileID: 0}
+    Rewards: []
+    Requests: []
+  - Name: 
+    HP: 0
+    Image: {fileID: 0}
+    Rewards: []
+    Requests: []
+  - Name: 
+    HP: 0
+    Image: {fileID: 0}
+    Rewards: []
+    Requests: []

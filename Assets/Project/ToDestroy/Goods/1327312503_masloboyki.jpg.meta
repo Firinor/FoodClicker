@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e3fc59958e026624cb321219e070eae4
+guid: 28a297920094f664fb31b25a0561950c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 0
   alignment: 0
@@ -134,7 +134,29 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: 1327312503_masloboyki_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 78
+        width: 286
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb727e654e46c824185129aefc3f9752
+      internalID: -52350931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -148,7 +170,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      1327312503_masloboyki_0: -52350931
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
