@@ -11,28 +11,23 @@ public class LevelData : ScriptableObject
     
     public LevelIngridientMultipliers[] Multipliers;
     
-    public LevelPoints[] Points;
+    public LevelPoint[] Points;
 }
 
 [Serializable]
-public class LevelPoints
+public class LevelPoint
 {
     public string Name;
     
+    public BigInteger MaxHealth => HP * BigInteger.Pow(10, Pow);
+        
     public int HP;
     public int Pow;
     
     public Sprite Image;
     
-    public LevelIngridientCount[] Rewards;
-    public LevelIngridientCount[] Requests;
-}
-
-[Serializable]
-public class LevelIngridientCount
-{
-    public string IngridientID;
-    public int Count = 1;
+    public Item[] Requests;
+    public Item[] Rewards;
 }
 
 [Serializable]

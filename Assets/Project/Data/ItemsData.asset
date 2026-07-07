@@ -12,4 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288ba043d1324a5886f535dc2d04a891, type: 3}
   m_Name: ItemsData
   m_EditorClassIdentifier: Assembly-CSharp::ItemsData
-  Items: []
+  Items:
+  - {fileID: 21300000, guid: ee5593124a441b142bb8854e3fe2e9da, type: 3}
+  - {fileID: 21300000, guid: 1d656ccac2cbe72429e0651b0f5a551f, type: 3}
+  - {fileID: 21300000, guid: 6401a7da1896b9247ab968a9ac4fb80f, type: 3}
+  - {fileID: 21300000, guid: 763b15276b24ef34a80d78e7f5097b46, type: 3}
+  - {fileID: -763458239, guid: a2568d605d5eb7f4ea551f81402186ec, type: 3}
+  - {fileID: -2096556687, guid: a2568d605d5eb7f4ea551f81402186ec, type: 3}
+  - {fileID: 21300000, guid: 2c5c7c9e0ff69d14fbd7d17df0585413, type: 3}
+  - {fileID: 21300000, guid: f2426f3700d8b5f4eb81a263731c4eca, type: 3}
+  - {fileID: 21300000, guid: 4eb92597b4e876648b16aa5099842876, type: 3}
+  - {fileID: 21300000, guid: de1fee9651eb7c94eb249be906babff5, type: 3}
+  - {fileID: 21300000, guid: 5b14f70629948694fa1a6ef3295989a0, type: 3}
+  - {fileID: 21300000, guid: df9b5e6b390e7954982283ea42098598, type: 3}
+  - {fileID: -138786453, guid: 312f1da19fec8f846ae10e9a8c15b10d, type: 3}
+  - {fileID: 21300000, guid: 476e4c98228a0f84093162f0d1fb5a90, type: 3}

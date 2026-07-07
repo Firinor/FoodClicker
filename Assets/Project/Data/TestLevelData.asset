@@ -14,84 +14,161 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   Name: "\u0417\u0435\u043B\u0451\u043D\u044B\u0435 \u043B\u0443\u0433\u0430"
   GoldPerWin: 100
-  Multipliers: []
+  Multipliers:
+  - ID: Corn
+    Multiplier: 0.35
+  - ID: Milk
+    Multiplier: 0.3
+  - ID: Beet
+    Multiplier: 0.25
+  - ID: Flour
+    Multiplier: 0.2
+  - ID: Sugar
+    Multiplier: 0.15
+  - ID: Egg
+    Multiplier: 0.12
+  - ID: Butter
+    Multiplier: 0.09
+  - ID: "Sour\u0421ream"
+    Multiplier: 0.06
+  - ID: Honey
+    Multiplier: 0.03
+  - ID: Berries
+    Multiplier: 0.02
+  - ID: Cream
+    Multiplier: 0.015
+  - ID: Dough
+    Multiplier: 0.01
+  - ID: Cake
+    Multiplier: 0.005
   Points:
-  - Name: "\u0417\u0435\u0440\u043D\u0430"
+  - Name: Corn
     HP: 10
+    Pow: 0
     Image: {fileID: 21300000, guid: ee5593124a441b142bb8854e3fe2e9da, type: 3}
+    Requests: []
     Rewards:
-    - Ingridient:
-        Name: 
-        Image: {fileID: 0}
+    - ID: Corn
       Count: 1
+  - Name: 'Milk '
+    HP: 100
+    Pow: 0
+    Image: {fileID: -577453947, guid: 0ecd2ac04d5ddb14b86c9f11f18ba724, type: 3}
     Requests: []
-  - Name: 
-    HP: 0
-    Image: {fileID: 0}
-    Rewards: []
+    Rewards:
+    - ID: Milk
+      Count: 1
+  - Name: Beet
+    HP: 1000
+    Pow: 0
+    Image: {fileID: 21300000, guid: 6401a7da1896b9247ab968a9ac4fb80f, type: 3}
     Requests: []
-  - Name: 
-    HP: 0
-    Image: {fileID: 0}
-    Rewards: []
+    Rewards:
+    - ID: Beet
+      Count: 1
+  - Name: Mill
+    HP: 10000
+    Pow: 0
+    Image: {fileID: 21300000, guid: 0160de91964dd4c4eba95352a73d2195, type: 3}
+    Requests:
+    - ID: Corn
+      Count: 10
+    Rewards:
+    - ID: Flour
+      Count: 1
+  - Name: SugarMachine
+    HP: 1
+    Pow: 5
+    Image: {fileID: 21300000, guid: d1974e2d3aa5d05438ab5236cb26d520, type: 3}
+    Requests:
+    - ID: Beet
+      Count: 7
+    Rewards:
+    - ID: Sugar
+      Count: 1
+  - Name: Chicken
+    HP: 1
+    Pow: 6
+    Image: {fileID: 695819325, guid: 0ecd2ac04d5ddb14b86c9f11f18ba724, type: 3}
     Requests: []
-  - Name: 
-    HP: 0
-    Image: {fileID: 0}
-    Rewards: []
+    Rewards:
+    - ID: Egg
+      Count: 1
+  - Name: "\u0421hurn"
+    HP: 1
+    Pow: 7
+    Image: {fileID: -52350931, guid: 28a297920094f664fb31b25a0561950c, type: 3}
+    Requests:
+    - ID: Milk
+      Count: 30
+    Rewards:
+    - ID: Butter
+      Count: 1
+  - Name: Pot
+    HP: 1
+    Pow: 8
+    Image: {fileID: 21300000, guid: 90f31e46658f4c74aaf3f76fb943aed8, type: 3}
+    Requests:
+    - ID: Milk
+      Count: 10
+    Rewards:
+    - ID: "Sour\u0421ream"
+      Count: 1
+  - Name: Beehive
+    HP: 1
+    Pow: 9
+    Image: {fileID: 21300000, guid: 4eb92597b4e876648b16aa5099842876, type: 3}
     Requests: []
-  - Name: 
-    HP: 0
-    Image: {fileID: 0}
-    Rewards: []
+    Rewards:
+    - ID: Honey
+      Count: 1
+  - Name: Berry bush
+    HP: 1
+    Pow: 10
+    Image: {fileID: 21300000, guid: de1fee9651eb7c94eb249be906babff5, type: 3}
     Requests: []
-  - Name: 
-    HP: 0
-    Image: {fileID: 0}
-    Rewards: []
-    Requests: []
-  - Name: 
-    HP: 0
-    Image: {fileID: 0}
-    Rewards: []
-    Requests: []
-  - Name: 
-    HP: 0
-    Image: {fileID: 0}
-    Rewards: []
-    Requests: []
-  - Name: 
-    HP: 0
-    Image: {fileID: 0}
-    Rewards: []
-    Requests: []
-  - Name: 
-    HP: 0
-    Image: {fileID: 0}
-    Rewards: []
-    Requests: []
-  - Name: 
-    HP: 0
-    Image: {fileID: 0}
-    Rewards: []
-    Requests: []
-  - Name: 
-    HP: 0
-    Image: {fileID: 0}
-    Rewards: []
-    Requests: []
-  - Name: 
-    HP: 0
-    Image: {fileID: 0}
-    Rewards: []
-    Requests: []
-  - Name: 
-    HP: 0
-    Image: {fileID: 0}
-    Rewards: []
-    Requests: []
-  - Name: 
-    HP: 0
-    Image: {fileID: 0}
-    Rewards: []
-    Requests: []
+    Rewards:
+    - ID: Berries
+      Count: 10
+  - Name: Cream
+    HP: 1
+    Pow: 11
+    Image: {fileID: 21300000, guid: df9b5e6b390e7954982283ea42098598, type: 3}
+    Requests:
+    - ID: "Sour\u0421ream"
+      Count: 5
+    - ID: Sugar
+      Count: 1
+    Rewards:
+    - ID: Cream
+      Count: 1
+  - Name: Dough
+    HP: 1
+    Pow: 12
+    Image: {fileID: -138786453, guid: 312f1da19fec8f846ae10e9a8c15b10d, type: 3}
+    Requests:
+    - ID: Sugar
+      Count: 1
+    - ID: Flour
+      Count: 1
+    - ID: Honey
+      Count: 1
+    - ID: Egg
+      Count: 2
+    Rewards:
+    - ID: Dough
+      Count: 5
+  - Name: Cake
+    HP: 1
+    Pow: 13
+    Image: {fileID: 21300000, guid: 476e4c98228a0f84093162f0d1fb5a90, type: 3}
+    Requests:
+    - ID: Berries
+      Count: 10
+    - ID: Dough
+      Count: 5
+    - ID: Cream
+      Count: 1
+    Rewards:
+    - ID: Cake
+      Count: 1

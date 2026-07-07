@@ -16,6 +16,11 @@ public class DigButtonView : MonoBehaviour
         _button.onClick.AddListener(() => OnClick?.Invoke());
     }
 
+    public void Click()
+    {
+        OnClick?.Invoke();
+    }
+
     private void OnDestroy()
     {
         _button.onClick.RemoveAllListeners();
