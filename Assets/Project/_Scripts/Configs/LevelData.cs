@@ -9,7 +9,7 @@ public class LevelData : ScriptableObject
     
     public int GoldPerWin;
     
-    public LevelIngridientMultipliers[] Multipliers;
+    public LevelIngridientMultiplier[] Multipliers;
     
     public LevelPoint[] Points;
 }
@@ -31,7 +31,7 @@ public class LevelPoint
 }
 
 [Serializable]
-public class LevelIngridientMultipliers
+public class LevelIngridientMultiplier
 {
     public string ID;
     public float Multiplier;

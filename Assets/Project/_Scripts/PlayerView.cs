@@ -20,6 +20,6 @@ public class PlayerView : MonoBehaviour
 
     public void SetPower(BigInteger power)
     {
-        PowerText.text = power.FormatNumber();
+        PowerText.text = "<sprite name=star> "+power.FormatNumber();
     }
 }

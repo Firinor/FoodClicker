@@ -6,6 +6,8 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] 
+    private MessageManager messages;
+    [SerializeField] 
     private DigButtonView digButtonPrefab;
     [SerializeField] 
     private Transform digButtonParent;
@@ -50,7 +52,10 @@ public class LevelManager : MonoBehaviour
 
     private void DamageEnemy()
     {
-        if (enemyData.Requests is not null)
+        bool needRecalculate = false;
+        
+        if (enemyData.Requests is not null
+            && enemyData.Requests.Length > 0)
         {
             if(!player.HasItems(enemyData.Requests.ToList()))
             {
@@ -61,6 +66,8 @@ public class LevelManager : MonoBehaviour
             {
                 player.RemoveItem(item);
             }
+
+            needRecalculate = true;
         }
 
         enemy.CurrentHP -= player.power;
@@ -73,16 +80,26 @@ public class LevelManager : MonoBehaviour
             foreach (var item in enemyData.Rewards)
             {
                 player.AddItem(item);
+                messages.SendMassage(item, player.ItemsCount(item).ToString(),transform.position);
             }
 
             enemy.CurrentHP = enemyData.MaxHealth;
+            enemyView.HealthText.text = enemy.CurrentHP.FormatNumber()+"/"+enemyData.MaxHealth.FormatNumber();
+            enemyView.HealthSlider.value = 1;
+            needRecalculate = true;
         }
-        
+
+        if (needRecalculate)
+        {
+            player.RecalculatePower();
+            playerView.SetPower(player.power);
+        }
     }
     
     private void InitializeLevelPoints()
     {
         digButtonParent.ClearAll(instant:true);
+        requestView.SetPlayer(player);
         foreach (var levelPoint in LevelDB.Data.Points)
         {
             DigButtonView newPoint = Instantiate(digButtonPrefab, digButtonParent);
