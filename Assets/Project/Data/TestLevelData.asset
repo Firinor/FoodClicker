@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: "\u0417\u0435\u043B\u0451\u043D\u044B\u0435 \u043B\u0443\u0433\u0430"
   GoldPerWin: 100
   Multipliers:
-  - ID: Corn
+  - ID: Grains
     Multiplier: 0.35
   - ID: Milk
     Multiplier: 0.3
@@ -42,13 +42,13 @@ MonoBehaviour:
   - ID: Cake
     Multiplier: 0.005
   Points:
-  - Name: Corn
+  - Name: Grains
     HP: 10
     Pow: 0
     Image: {fileID: 21300000, guid: ee5593124a441b142bb8854e3fe2e9da, type: 3}
     Requests: []
     Rewards:
-    - ID: Corn
+    - ID: Grains
       Count: 1
   - Name: 'Milk '
     HP: 100
@@ -71,7 +71,7 @@ MonoBehaviour:
     Pow: 0
     Image: {fileID: 21300000, guid: 0160de91964dd4c4eba95352a73d2195, type: 3}
     Requests:
-    - ID: Corn
+    - ID: Grains
       Count: 10
     Rewards:
     - ID: Flour
