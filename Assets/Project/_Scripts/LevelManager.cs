@@ -14,6 +14,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] 
     private PlayerView playerView;
     [SerializeField] 
+    private InventoryView playerInventoryView;
+    [SerializeField] 
     private PlayerAutoAttack playerAutoAttack;
     [SerializeField] 
     private EnemyView enemyView;
@@ -33,6 +35,7 @@ public class LevelManager : MonoBehaviour
         InitializeLevelPoints();
         InitializeBattle();
         
+        playerInventoryView.Initialize(player);
         playerView.SetPower(player.power);
     }
 
