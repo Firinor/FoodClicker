@@ -8,14 +8,16 @@ public class ShopItemView : MonoBehaviour
     public TextMeshProUGUI Price;
     public string Discription;
 
-    public void SetItem(ShopItem item)
+    private ShopItemData data;
+    
+    //Sold out
+    
+    public void SetItem(ShopItemData item, int level)
     {
-        
-    }
-}
+        data = item;
 
-public struct ShopItem
-{
-    public string ID;
-    public int Price;
+        Icon.sprite = item.Icon;
+        Discription = item.Discription;
+        Price.text = "" + item.Cost[level];
+    }
 }

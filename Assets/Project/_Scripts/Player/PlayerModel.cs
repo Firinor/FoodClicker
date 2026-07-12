@@ -10,6 +10,14 @@ public class PlayerModel
     public BigInteger power = 1;
     
     public float AttackSpeed => data.AttackSpeed;
+    public float GoldChance;
+    public float NoRemoveItemsChance;
+    public float DobleRewardChance;
+    public float CriticalChance;
+    public float CriticalPower;
+    public bool AutoAutoClick;
+    public bool Minion;
+    public float PowerMultipler;
     
     private readonly List<Item> Inventory = new();
 
@@ -100,4 +108,6 @@ public class PlayerModel
             power /= accuracy;
         }
     }
+    
+    
 }

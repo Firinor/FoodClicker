@@ -2,7 +2,7 @@ using System;
 using System.Numerics;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "LevelData", menuName = "Conigs/LevelData", order = 1)]
+[CreateAssetMenu(fileName = "LevelData", menuName = "Configs/LevelData", order = 1)]
 public class LevelData : ScriptableObject
 {
     public string Name;

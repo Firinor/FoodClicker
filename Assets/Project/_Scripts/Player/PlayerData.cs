@@ -7,4 +7,5 @@ public class PlayerData
     public float AttackSpeed = 1;
     
     public Item[] Items;
+    public Item[] ShopItems;
 }

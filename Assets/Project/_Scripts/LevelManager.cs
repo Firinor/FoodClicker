@@ -2,6 +2,7 @@ using System.Linq;
 using System.Numerics;
 using FirMath;
 using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
 
 public class LevelManager : MonoBehaviour
 {
@@ -41,8 +42,8 @@ public class LevelManager : MonoBehaviour
 
     private void InitializeBattle()
     {
-        playerAutoAttack.onComplete += DamageEnemy;
-        enemyView.ClickButton.onClick.AddListener(DamageEnemy);
+        playerAutoAttack.onComplete += AutoDamageEnemy;
+        enemyView.OnClick += DamageEnemy;
         
         enemyView.AutoClickButton.onClick.AddListener(() =>
             {
@@ -53,7 +54,12 @@ public class LevelManager : MonoBehaviour
         playerView.SetAutoAttack(toState: false);
     }
 
-    private void DamageEnemy()
+    private void AutoDamageEnemy()
+    {
+        DamageEnemy(playerAutoAttack.transform.position);
+    }
+
+    private void DamageEnemy(Vector2 actionPoint)
     {
         bool needRecalculate = false;
         
@@ -83,7 +89,7 @@ public class LevelManager : MonoBehaviour
             foreach (var item in enemyData.Rewards)
             {
                 player.AddItem(item);
-                messages.SendMassage(item, player.ItemsCount(item).ToString(),transform.position);
+                messages.SendMassage(item, player.ItemsCount(item).ToString(), actionPoint);
             }
 
             enemy.CurrentHP = enemyData.MaxHealth;
@@ -131,5 +137,13 @@ public class LevelManager : MonoBehaviour
             .GetChild(0)
             .GetComponent<DigButtonView>()
             .Click();
+    }
+
+    private void OnDestroy()
+    {
+        playerAutoAttack.onComplete -= AutoDamageEnemy;
+        enemyView.OnClick -= DamageEnemy;
+        
+        enemyView.AutoClickButton.onClick.RemoveAllListeners();
     }
 }
