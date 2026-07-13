@@ -54,6 +54,7 @@ MonoBehaviour:
   Icon: {fileID: 4748234543802905456}
   Text: {fileID: 2787022047299692724}
   Group: {fileID: 2558672476293140355}
+  critColor: {r: 0.8396226, g: 0.27878705, b: 0.21782663, a: 1}
   floatSpeed: 2
   lifeTime: 2
   Transparency:
@@ -294,8 +295,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 432807dfc4bbbdd4098fb44c70bbdff9, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

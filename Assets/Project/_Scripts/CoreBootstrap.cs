@@ -2,23 +2,19 @@ using UnityEngine;
 
 public class CoreBootstra : MonoBehaviour
 {
-    public LevelData LevelData;
-    public ItemsData Items;
-    public Sprite Boss;
+    public LevelDB LevelData;
 
     public LevelManager level;
-    public PlayerAutoAttack playerAutoAttack;
-    public PlayerModel player;
+    private PlayerModel player;
     public PlayerData playerData;
     
     private void Awake()
     {
-        LevelDB.Initialize(LevelData, Items, Boss);
+        LevelDB.Initialize(LevelData);
         
         player = new();
         player.Initialize(playerData);
             
         level.Initialize(player);
-        playerAutoAttack.Initialize(player);
     }
 }

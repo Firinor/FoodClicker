@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 883e690d3f3849a38bbaa70a538943ff, type: 3}
-  m_Name: MoreMoney
+  m_Name: CriticalPower
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
-  ID: 6
-  Name: Need more gold
-  Discription: Higher chance of finding gold
+  ID: 3
+  Name: Critical power
+  Discription: Enhances the power of impressive work
   Icon: {fileID: 21300000, guid: 432807dfc4bbbdd4098fb44c70bbdff9, type: 3}
-  Value: 0a000000140000001e00000028000000320000003c000000
+  Value: 020000000300000004000000050000000600000007000000
   Cost: 05000000190000007d00000071020000350c0000

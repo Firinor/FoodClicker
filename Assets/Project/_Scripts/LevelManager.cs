@@ -1,7 +1,10 @@
+using System;
 using System.Linq;
 using System.Numerics;
 using FirMath;
+using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 using Vector2 = UnityEngine.Vector2;
 
 public class LevelManager : MonoBehaviour
@@ -24,6 +27,12 @@ public class LevelManager : MonoBehaviour
     private ItemsListView requestView;
     [SerializeField] 
     private ItemsListView rewardView;
+    [SerializeField] 
+    private TextMeshProUGUI timerText;
+    private float _timer;
+    
+    [SerializeField] 
+    private GameObject minion;
     
     private PlayerModel player;
 
@@ -38,27 +47,28 @@ public class LevelManager : MonoBehaviour
         
         playerInventoryView.Initialize(player);
         playerView.SetPower(player.power);
+        playerView.SetGold(player.Gold);
+        minion.SetActive(player.Minion);
+        playerAutoAttack.Initialize(player);
     }
-
     private void InitializeBattle()
     {
         playerAutoAttack.onComplete += AutoDamageEnemy;
         enemyView.OnClick += DamageEnemy;
         
-        enemyView.AutoClickButton.onClick.AddListener(() =>
-            {
-                playerView.SetAutoAttack(toState: true);
-                enemyView.AutoClickButton.gameObject.SetActive(false);
-            });
-        
-        playerView.SetAutoAttack(toState: false);
+        enemyView.AutoClickButton.onClick.AddListener(EnableAutoAttackPlayer);
+    }
+
+    private void EnableAutoAttackPlayer()
+    {
+        playerView.SetAutoAttack(toState: true);
+        enemyView.AutoClickButton.gameObject.SetActive(false);
     }
 
     private void AutoDamageEnemy()
     {
         DamageEnemy(playerAutoAttack.transform.position);
     }
-
     private void DamageEnemy(Vector2 actionPoint)
     {
         bool needRecalculate = false;
@@ -71,25 +81,40 @@ public class LevelManager : MonoBehaviour
                 playerView.SetAutoAttack(toState: false);
                 return;
             }
-            foreach (var item in enemyData.Requests)
+            if (Random.value < player.NoRemoveItemsChance)
             {
-                player.RemoveItem(item);
+                foreach (var item in enemyData.Requests)
+                {
+                    player.RemoveItem(item);
+                }
+                needRecalculate = true;
             }
-
-            needRecalculate = true;
         }
-
-        enemy.CurrentHP -= player.power;
+        
+        enemy.CurrentHP -= player.GetAttackPower(out bool isCrit);
+        if(isCrit && enemyData.MaxHealth <= player.power)
+            messages.SendMassageCrit(actionPoint);
         enemyView.HealthText.text = enemy.CurrentHP.FormatNumber()+"/"+enemyData.MaxHealth.FormatNumber();
         var persentage = BigInteger.Divide(enemy.CurrentHP * 100, enemyData.MaxHealth);
         enemyView.HealthSlider.value = (float)persentage/100;
 
         if (enemy.CurrentHP <= 0)
         {
+            bool isReward = Random.value < player.DobleRewardChance;
+            bool isGold = Random.value < player.GoldChance;
+
+            if (isGold)
+            {
+                player.AddGold(1);
+                messages.SendMassage(new Item{ID = "Gold", Count = 1}, player.Gold.ToString(), actionPoint);
+                playerView.SetGold(player.Gold);
+            }
             foreach (var item in enemyData.Rewards)
             {
-                player.AddItem(item);
-                messages.SendMassage(item, player.ItemsCount(item).ToString(), actionPoint);
+                Item _item = item;
+                _item.Count *= isReward ? 2 : 1;
+                player.AddItem(_item);
+                messages.SendMassage(_item, player.ItemsCount(_item).ToString(), actionPoint);
             }
 
             enemy.CurrentHP = enemyData.MaxHealth;
@@ -104,7 +129,6 @@ public class LevelManager : MonoBehaviour
             playerView.SetPower(player.power);
         }
     }
-    
     private void InitializeLevelPoints()
     {
         digButtonParent.ClearAll(instant:true);
@@ -116,8 +140,14 @@ public class LevelManager : MonoBehaviour
             newPoint.Lock.gameObject.SetActive(false);
             newPoint.OnClick += () =>
             {
-                enemyView.AutoClickButton.gameObject.SetActive(true);
-                playerView.SetAutoAttack(toState: false);
+                if (player.AutoAutoClick
+                    && levelPoint.Requests.Length == 0)
+                    EnableAutoAttackPlayer();
+                else
+                {
+                    enemyView.AutoClickButton.gameObject.SetActive(true);
+                    playerView.SetAutoAttack(toState: false);
+                }
                 enemyView.HealthSlider.value = 1;
                 enemyView.NameText.text = levelPoint.Name;
                 enemyData = levelPoint;
@@ -137,6 +167,16 @@ public class LevelManager : MonoBehaviour
             .GetChild(0)
             .GetComponent<DigButtonView>()
             .Click();
+    }
+
+    private void Update()
+    {
+        _timer += Time.deltaTime;
+        TimeSpan time = TimeSpan.FromSeconds(_timer);
+        if((int)time.TotalHours > 0)
+            timerText.text = $@"{(int)time.TotalHours}:{time:mm\:ss\.ff}";
+        else
+            timerText.text = $@"{time:mm\:ss\.ff}";
     }
 
     private void OnDestroy()

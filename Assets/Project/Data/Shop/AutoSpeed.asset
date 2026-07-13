@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 883e690d3f3849a38bbaa70a538943ff, type: 3}
-  m_Name: MoreMoney
+  m_Name: AutoSpeed
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
-  ID: 6
-  Name: Need more gold
-  Discription: Higher chance of finding gold
-  Icon: {fileID: 21300000, guid: 432807dfc4bbbdd4098fb44c70bbdff9, type: 3}
-  Value: 0a000000140000001e00000028000000320000003c000000
+  ID: 1
+  Name: Auto Speed
+  Discription: Higher speed of automatic work
+  Icon: {fileID: -1977416913, guid: be868dab0aed14c4da49dddea345210e, type: 3}
+  Value: 0a0000000f00000014000000190000001e00000023000000
   Cost: 05000000190000007d00000071020000350c0000

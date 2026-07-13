@@ -9,12 +9,10 @@ public class PlayerAutoAttack : MonoBehaviour
     private PlayerModel player;
 
     public event Action onComplete;
-    private float playerAttackSpeed;
 
     public void Initialize(PlayerModel player)
     {
         this.player = player;
-        playerAttackSpeed = player.AttackSpeed;
     }
     
     private void OnEnable()
@@ -29,7 +27,7 @@ public class PlayerAutoAttack : MonoBehaviour
 
     private void Update()
     {
-        AutoAttackImage.fillAmount += playerAttackSpeed * Time.deltaTime;
+        AutoAttackImage.fillAmount += player.AttackSpeed * Time.deltaTime;
         if (AutoAttackImage.fillAmount >= 1)
         {
             onComplete?.Invoke();//player.Attack();

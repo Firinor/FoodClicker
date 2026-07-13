@@ -22,4 +22,9 @@ public class PlayerView : MonoBehaviour
     {
         PowerText.text = "<sprite name=star> "+power.FormatNumber();
     }
+    
+    public void SetGold(int value)
+    {
+        GoldText.text = "<sprite name=coin> " + value;
+    }
 }

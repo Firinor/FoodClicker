@@ -8,6 +8,7 @@ public class BubbleMessage : MonoBehaviour
     public Image Icon;
     public TextMeshProUGUI Text;
     public CanvasGroup Group;
+    public Color critColor;
 
     public float floatSpeed = 15f;
     public float lifeTime = 2f;
@@ -21,8 +22,15 @@ public class BubbleMessage : MonoBehaviour
 
     public void SetItem(Item item, string playerItems)
     {
-        Icon.sprite = LevelDB.Items.Items.First(i => string.Equals(i.name, item.ID));
+        if(!string.Equals(item.ID, "Gold"))
+            Icon.sprite = LevelDB.Items.Items.First(i => string.Equals(i.name, item.ID));
         Text.text = "+" + item.Count + "("+playerItems+")";
+    }
+    public void SetCrit()
+    {
+        Icon.enabled = false;
+        Text.text = "Crit!";
+        Text.color = critColor;
     }
 
     private void Update()
