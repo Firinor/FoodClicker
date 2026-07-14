@@ -15,6 +15,7 @@ MonoBehaviour:
   ID: 5
   Name: Minion
   Discription: "You have an assistant \nwho can be sent to work"
-  Icon: {fileID: 21300000, guid: 432807dfc4bbbdd4098fb44c70bbdff9, type: 3}
+  Icon: {fileID: 21300000, guid: 438b8aee409e4e74182b5cd4d3de2374, type: 3}
+  Format: X
   Value: 0000000001000000
   Cost: 4b000000

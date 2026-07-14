@@ -15,6 +15,7 @@ MonoBehaviour:
   ID: 3
   Name: Critical power
   Discription: Enhances the power of impressive work
-  Icon: {fileID: 21300000, guid: 432807dfc4bbbdd4098fb44c70bbdff9, type: 3}
+  Icon: {fileID: 1247648398, guid: be868dab0aed14c4da49dddea345210e, type: 3}
+  Format: xX
   Value: 020000000300000004000000050000000600000007000000
   Cost: 05000000190000007d00000071020000350c0000

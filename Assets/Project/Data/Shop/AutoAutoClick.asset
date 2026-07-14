@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883e690d3f3849a38bbaa70a538943ff, type: 3}
   m_Name: AutoAutoClick
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
-  ID: AutoAutoClick
+  ID: 0
   Name: Auto-click
   Discription: "When switching to another ingredient,\n auto-work immediately turns
     on"
-  Icon: {fileID: 21300000, guid: 432807dfc4bbbdd4098fb44c70bbdff9, type: 3}
+  Icon: {fileID: -287922397, guid: be868dab0aed14c4da49dddea345210e, type: 3}
+  Format: X
   Value: 0000000001000000
   Cost: 19000000

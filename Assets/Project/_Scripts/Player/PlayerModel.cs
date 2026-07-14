@@ -25,6 +25,7 @@ public class PlayerModel
     private readonly List<Item> Inventory = new();
     private List<Item> ShopItems = new();
 
+    public event Action<BigInteger> OnPowerChange;
     public event Action<int> OnGoldChange;
     public event Action<Item> OnItemsChange;
     public event Action<Item> OnShopItemsChange;
@@ -83,14 +84,9 @@ public class PlayerModel
         }
     }
 
-    public void UpSkill(ShopKey key)
+    public void UpSkill(Item item)
     {
-        Item check = new Item
-        {
-            ID = key.ToString(),
-            Count = 1,
-        };
-        AddShopItem(check);
+        AddShopItem(item);
         RecalculateSkills();
         RecalculatePower();
     }
@@ -208,11 +204,13 @@ public class PlayerModel
             mult += 1;
             power *= (int)(mult * accuracy);
         }
-        power *= (1 + (int)(PowerMultipler * 100));
+        power *=  100 + (int)(100 * PowerMultipler);
+        power /= 100;
         foreach (var item in Inventory)
         {
             power /= accuracy;
         }
+        OnPowerChange?.Invoke(power);
     }
     
     public BigInteger GetAttackPower(out bool isCrit)

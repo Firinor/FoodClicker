@@ -15,6 +15,7 @@ MonoBehaviour:
   ID: 4
   Name: Double reward chance
   Discription: The chance to get twice as much reward
-  Icon: {fileID: -1958859585, guid: be868dab0aed14c4da49dddea345210e, type: 3}
+  Icon: {fileID: 656872479, guid: be868dab0aed14c4da49dddea345210e, type: 3}
+  Format: X%
   Value: 000000000a000000140000001e0000002800000032000000
   Cost: 05000000190000007d00000071020000350c0000

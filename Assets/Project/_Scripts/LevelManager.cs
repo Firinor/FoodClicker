@@ -29,6 +29,8 @@ public class LevelManager : MonoBehaviour
     private ItemsListView rewardView;
     [SerializeField] 
     private TextMeshProUGUI timerText;
+    [SerializeField] 
+    private ShopView shopView;
     private float _timer;
     
     [SerializeField] 
@@ -46,10 +48,14 @@ public class LevelManager : MonoBehaviour
         InitializeBattle();
         
         playerInventoryView.Initialize(player);
+        player.OnPowerChange += playerView.SetPower;
         playerView.SetPower(player.power);
+        player.OnGoldChange += playerView.SetGold;
         playerView.SetGold(player.Gold);
+        
         minion.SetActive(player.Minion);
         playerAutoAttack.Initialize(player);
+        shopView.Initialize(player);
     }
     private void InitializeBattle()
     {
@@ -107,7 +113,6 @@ public class LevelManager : MonoBehaviour
             {
                 player.AddGold(1);
                 messages.SendMassage(new Item{ID = "Gold", Count = 1}, player.Gold.ToString(), actionPoint);
-                playerView.SetGold(player.Gold);
             }
             foreach (var item in enemyData.Rewards)
             {
@@ -126,7 +131,6 @@ public class LevelManager : MonoBehaviour
         if (needRecalculate)
         {
             player.RecalculatePower();
-            playerView.SetPower(player.power);
         }
     }
     private void InitializeLevelPoints()
@@ -183,6 +187,8 @@ public class LevelManager : MonoBehaviour
     {
         playerAutoAttack.onComplete -= AutoDamageEnemy;
         enemyView.OnClick -= DamageEnemy;
+        player.OnPowerChange -= playerView.SetPower;
+        player.OnGoldChange -= playerView.SetGold;
         
         enemyView.AutoClickButton.onClick.RemoveAllListeners();
     }
