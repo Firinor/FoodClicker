@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DoubleReward
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
   ID: 4
-  Name: Double reward chance
+  Name: Double reward
   Discription: The chance to get twice as much reward
   Icon: {fileID: 656872479, guid: be868dab0aed14c4da49dddea345210e, type: 3}
   Format: X%

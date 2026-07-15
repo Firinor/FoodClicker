@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,6 +23,9 @@ public class ShopView : MonoBehaviour
     private GameObject closeDiscriptionButton;
     
     private PlayerModel player;
+
+    private BuyButtonSubscription _buttonSubscription = new();
+    
     public void Initialize(PlayerModel player)
     {
         this.player = player;
@@ -38,6 +42,14 @@ public class ShopView : MonoBehaviour
                 EnableDiscription(shopItemData, shopItem);
             });
         }
+
+        _buttonSubscription.Button = buyButton.GetComponent<Button>();
+        player.OnGoldChange += _buttonSubscription.MayBuy;
+    }
+
+    public void Unsubscribe()
+    {
+        
     }
 
     private void EnableDiscription(ShopItemData shopItemData, ShopItemView shopItem)
@@ -47,11 +59,15 @@ public class ShopView : MonoBehaviour
         
         int playerLevel = player.ItemsCount(new Item{ID = shopItemData.ID.ToString()});
         
+        int cost = shopItemData.Cost[playerLevel];
+        _buttonSubscription.Cost = cost;
+        _buttonSubscription.MayBuy(player.Gold);
+        
         Discription.SetActive(true);
         closeDiscriptionButton.SetActive(true);
         discriptionName.text = shopItemData.Name;
         discriptionLevel.text = $"{playerLevel}/{shopItemData.MaxLevel}";
-        discription.text = shopItemData.Discription;
+        discription.text = shopItemData.Discription.Replace("\n", "").Replace("\r", "");
 
         if (playerLevel == shopItemData.MaxLevel)
         {
@@ -62,7 +78,6 @@ public class ShopView : MonoBehaviour
         {
             discriptionEffect.text = $"{shopItemData.GetEffect(playerLevel)} => {shopItemData.GetEffect(playerLevel+1)}";
             buyButton.SetActive(true);
-            btn.interactable = player.Gold >= shopItemData.Cost[playerLevel];
             btn.onClick.AddListener(() =>
             {
                 player.RemoveGold(shopItemData.Cost[playerLevel]);
@@ -80,8 +95,19 @@ public class ShopView : MonoBehaviour
     private void OnDestroy()
     {
         for (int i = 0; i < items.Length; i++)
-        {
             items[i].Button.onClick.RemoveAllListeners();
+        
+        player.OnGoldChange -= _buttonSubscription.MayBuy;
+    }
+
+    private class BuyButtonSubscription
+    {
+        public int Cost;
+        public Button Button;
+
+        public void MayBuy(int playerGold)
+        {
+            Button.interactable = Cost <= playerGold;
         }
     }
 }

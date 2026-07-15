@@ -87,7 +87,8 @@ public class LevelManager : MonoBehaviour
                 playerView.SetAutoAttack(toState: false);
                 return;
             }
-            if (Random.value < player.NoRemoveItemsChance)
+            
+            if (Random.value >= player.NoRemoveItemsChance)
             {
                 foreach (var item in enemyData.Requests)
                 {
@@ -98,7 +99,7 @@ public class LevelManager : MonoBehaviour
         }
         
         enemy.CurrentHP -= player.GetAttackPower(out bool isCrit);
-        if(isCrit && enemyData.MaxHealth <= player.power)
+        if(isCrit && enemyData.MaxHealth > player.power)
             messages.SendMassageCrit(actionPoint);
         enemyView.HealthText.text = enemy.CurrentHP.FormatNumber()+"/"+enemyData.MaxHealth.FormatNumber();
         var persentage = BigInteger.Divide(enemy.CurrentHP * 100, enemyData.MaxHealth);
