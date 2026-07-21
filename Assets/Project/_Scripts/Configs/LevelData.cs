@@ -24,6 +24,7 @@ public class LevelPoint
     public int HP;
     public int Pow;
     
+    [NonSerialized]
     public Sprite Image;
     
     public Item[] Requests;
